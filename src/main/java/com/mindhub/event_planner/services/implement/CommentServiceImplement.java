@@ -1,0 +1,30 @@
+package com.mindhub.event_planner.services.implement;
+
+import com.mindhub.event_planner.dtos.CommentDTO;
+import com.mindhub.event_planner.handlers.ObjectNotFound;
+import com.mindhub.event_planner.models.Comment;
+import com.mindhub.event_planner.repositories.CommentRepository;
+import com.mindhub.event_planner.services.CommentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class CommentServiceImplement implements CommentService {
+
+    @Autowired
+    CommentRepository commentRepository;
+
+    @Override
+    public Comment findById(Long id) {
+        return commentRepository.findById(id).orElseThrow( () -> new ObjectNotFound("The Comment with the ID:" + id + " was not found"));
+    }
+
+    @Override
+    public List<CommentDTO> findAll() {
+        return commentRepository.findAll().stream().map(CommentDTO::new).collect(Collectors.toList());
+    }
+
+}
