@@ -7,11 +7,11 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long comment_id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
-    private Customer user;
+    private UserEntity user;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="event_id")
@@ -26,23 +26,7 @@ public class Comment {
     }
 
     public Long getComment_id() {
-        return comment_id;
-    }
-
-    public Customer getUser() {
-        return user;
-    }
-
-    public void setUser(Customer user) {
-        this.user = user;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
+        return id;
     }
 
     public String getComment() {
@@ -53,13 +37,11 @@ public class Comment {
         this.comment = comment;
     }
 
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "comment=" + comment_id +
-                ", user=" + user +
-                ", event=" + event +
-                ", comment=" + comment +
-                '}';
-    }
+    public UserEntity getUser() { return user; }
+
+    public void setUser(UserEntity user) { this.user = user; }
+
+    public Event getEvent() { return event; }
+
+    public void setEvent(Event event) { this.event = event; }
 }

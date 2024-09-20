@@ -3,7 +3,6 @@ package com.mindhub.event_planner.models;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +11,7 @@ public class EventLocation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long eventLocation_id;
+    private Long id;
 
     @OneToMany(mappedBy = "eventLocation", fetch = FetchType.EAGER)
     private Set<CustomerEvent> customerEvents = new HashSet<>();
@@ -37,33 +36,8 @@ public class EventLocation {
         this.assistance = assistance;
     }
 
-    public Long getEventLocation_id() {
-        return eventLocation_id;
-    }
-
-    public Set<CustomerEvent> getCustomerEvents() {
-        return customerEvents;
-    }
-
-    public void addCustomerEvents(CustomerEvent customerEvent) {
-        customerEvent.setEventLocation_id(this);
-        customerEvents.add(customerEvent);
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
+    public Long getId() {
+        return id;
     }
 
     public LocalDateTime getDate() {
@@ -82,15 +56,18 @@ public class EventLocation {
         this.assistance = assistance;
     }
 
-    @Override
-    public String toString() {
-        return "EventLocation{" +
-                "eventLocation_id=" + eventLocation_id +
-                ", customerEvents=" + customerEvents +
-                ", event=" + event +
-                ", location=" + location +
-                ", date=" + date +
-                ", assistance=" + assistance +
-                '}';
+    public Event getEvent() { return event; }
+
+    public void setEvent(Event event) { this.event = event; }
+
+    public Location getLocation() { return location; }
+
+    public void setLocation(Location location) { this.location = location;}
+
+    public Set<CustomerEvent> getCustomerEvents() { return customerEvents; }
+
+    public void addCustomerEvents(CustomerEvent customerEvent) {
+        customerEvent.setEventLocation(this);
+        customerEvents.add(customerEvent);
     }
 }
