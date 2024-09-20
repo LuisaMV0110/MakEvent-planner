@@ -10,7 +10,7 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long location_id;
+    private Long id;
 
     @OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
     private Set<EventLocation> eventLocations = new HashSet<>();
@@ -32,17 +32,8 @@ public class Location {
         this.img = img;
     }
 
-    public Long getLocation_id() {
-        return location_id;
-    }
-
-    public Set<EventLocation> getEventLocations() {
-        return eventLocations;
-    }
-
-    public void addEventLocations(EventLocation eventLocation) {
-        eventLocation.setLocation(this);
-        eventLocations.add(eventLocation);
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -77,15 +68,13 @@ public class Location {
         this.img = img;
     }
 
-    @Override
-    public String toString() {
-        return "Location{" +
-                "location_id=" + location_id +
-                ", eventLocations=" + eventLocations +
-                ", name=" + name +
-                ", location=" + location +
-                ", capacity=" + capacity +
-                ", img=" + img +
-                '}';
+        public Set<EventLocation> getEventLocations() {
+        return eventLocations;
     }
+
+    public void addEventLocations(EventLocation eventLocation) {
+        eventLocation.setLocation(this);
+        eventLocations.add(eventLocation);
+    }
+
 }

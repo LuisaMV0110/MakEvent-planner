@@ -4,26 +4,27 @@ import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 public class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long event_id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="manager_id")
+    private Manager manager;
 
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
-    private Set<Comment> commentsE = new HashSet<>();
+    private Set<Comment> comments = new HashSet<>();
 
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
-    private Set<LikeStatus> likeStatuses = new HashSet<>();
+    private Set<LikeStatus> likeS = new HashSet<>();
 
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
     private Set<EventLocation> eventLocations = new HashSet<>();
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="organizer_id")
-    private Customer organizer;
 
     private String desc;
 
@@ -42,44 +43,7 @@ public class Event {
         this.name = name;
     }
 
-    public Long getEvent_id() {
-        return event_id;
-    }
-
-    public Set<Comment> getComments() {
-        return commentsE;
-    }
-
-    public void addComments(Comment comment) {
-        comment.setEvent(this);
-        commentsE.add(comment);
-    }
-
-    public Set<LikeStatus> getLikes() {
-        return likeStatuses;
-    }
-
-    public void addLikes(LikeStatus likeStatus) {
-        likeStatus.setEvent(this);
-        likeStatuses.add(likeStatus);
-    }
-
-    public Set<EventLocation> getEventLocations() {
-        return eventLocations;
-    }
-
-    public void addEventLocations(EventLocation eventLocation) {
-        eventLocation.setEvent(this);
-        eventLocations.add(eventLocation);
-    }
-
-    public Customer getOrganizer() {
-        return organizer;
-    }
-
-    public void setOrganizer(Customer organizer) {
-        this.organizer = organizer;
-    }
+    public UUID getId() { return id; }
 
     public String getDesc() {
         return desc;
@@ -113,18 +77,28 @@ public class Event {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Event{" +
-                "event_id=" + event_id +
-                ", comments=" + commentsE +
-                ", likes=" + likeStatuses +
-                ", eventLocations=" + eventLocations +
-                ", organizer=" + organizer +
-                ", desc=" + desc +
-                ", img=" + img +
-                ", age_req=" + age_req +
-                ", name=" + name +
-                '}';
+    public Manager getManager() { return manager; }
+
+    public void setManager(Manager manager) { this.manager = manager; }
+
+    public Set<Comment> getComments() { return comments; }
+
+    public void addComments(Comment comment) {
+        comment.setEvent(this);
+        comments.add(comment);
+    }
+
+    public Set<LikeStatus> getLikeS() { return likeS; }
+
+    public void addLikeS(LikeStatus likeStatus) {
+        likeStatus.setEvent(this);
+        likeS.add(likeStatus);
+    }
+
+    public Set<EventLocation> getEventLocations() { return eventLocations; }
+
+    public void addEventLocations(EventLocation eventLocation) {
+        eventLocation.setEvent(this);
+        eventLocations.add(eventLocation);
     }
 }

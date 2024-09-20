@@ -8,11 +8,11 @@ public class LikeStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long likeStatus_id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
-    private Customer user;
+    private UserEntity user;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="event_id")
@@ -26,39 +26,17 @@ public class LikeStatus {
         this.likeS = like;
     }
 
-    public Long getLike_id() { return likeStatus_id; }
+    public Long getId() { return id; }
 
-    public Customer getUser_id() {
-        return user;
-    }
+    public LikeEnum getLikeS() { return likeS; }
 
-    public void setUser(Customer user) {
-        this.user = user;
-    }
+    public void setLikeS(LikeEnum likeS) { this.likeS = likeS; }
 
-    public Event getEvent() {
-        return event;
-    }
+    public UserEntity getUser() { return user; }
 
-    public void setEvent(Event event) {
-        this.event = event;
-    }
+    public void setUser(UserEntity user) { this.user = user; }
 
-    public LikeEnum getLike() {
-        return likeS;
-    }
+    public Event getEvent() { return event; }
 
-    public void setLike(LikeEnum like) {
-        this.likeS = like;
-    }
-
-    @Override
-    public String toString() {
-        return "Like{" +
-                "LikeStatus_id=" + likeStatus_id +
-                ", user_id=" + user+
-                ", event_id=" + event +
-                ", like=" + likeS +
-                '}';
-    }
+    public void setEvent(Event event) { this.event = event; }
 }
