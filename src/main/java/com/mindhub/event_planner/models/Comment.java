@@ -25,7 +25,7 @@ public class Comment {
         this.comment = comment;
     }
 
-    public Long getComment_id() {
+    public Long getId() {
         return id;
     }
 
