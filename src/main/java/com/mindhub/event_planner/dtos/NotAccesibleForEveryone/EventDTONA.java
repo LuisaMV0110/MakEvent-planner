@@ -1,12 +1,14 @@
-package com.mindhub.event_planner.dtos;
+package com.mindhub.event_planner.dtos.NotAccesibleForEveryone;
 
+import com.mindhub.event_planner.dtos.CommentDTO;
+import com.mindhub.event_planner.dtos.LikeDTO;
 import com.mindhub.event_planner.models.Event;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
 
-public class EventDTO {
+public class EventDTONA {
 
     private Long id;
 
@@ -22,11 +24,11 @@ public class EventDTO {
 
     private Set<LikeDTO> likeS;
 
-    private Set<EventLocationDTO> eventLocations;
+    private Set<EventLocationDTONA> eventLocations;
 
-    public EventDTO() {}
+    public EventDTONA() {}
 
-    public EventDTO(Event event) {
+    public EventDTONA(Event event) {
         this.id = event.getId();
         this.name = event.getName();
         this.age_req = event.getAge_req();
@@ -34,7 +36,7 @@ public class EventDTO {
         this.desc = event.getDesc();
         this.comments = event.getComments().stream().map(CommentDTO::new).collect(Collectors.toSet());
         this.likeS = event.getLikeS().stream().map(LikeDTO::new).collect(Collectors.toSet());
-        this.eventLocations = event.getEventLocations().stream().map(EventLocationDTO::new).collect(Collectors.toSet());
+        this.eventLocations = event.getEventLocations().stream().map(EventLocationDTONA::new).collect(Collectors.toSet());
     }
 
     public Long getId() {
@@ -65,7 +67,7 @@ public class EventDTO {
         return likeS;
     }
 
-    public Set<EventLocationDTO> getEventLocations() {
+    public Set<EventLocationDTONA> getEventLocations() {
         return eventLocations;
     }
 

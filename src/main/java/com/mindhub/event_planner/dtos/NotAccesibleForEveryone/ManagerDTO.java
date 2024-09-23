@@ -1,4 +1,4 @@
-package com.mindhub.event_planner.dtos;
+package com.mindhub.event_planner.dtos.NotAccesibleForEveryone;
 
 import com.mindhub.event_planner.enums.Gender;
 import com.mindhub.event_planner.models.Manager;
@@ -22,7 +22,7 @@ public class ManagerDTO {
 
     private Gender gender;
 
-    private Set<EventDTO> events;
+    private Set<EventDTONA> events;
 
     public ManagerDTO() {}
 
@@ -34,7 +34,7 @@ public class ManagerDTO {
         this.activated = manager.isActivated();;
         this.age = manager.getAge();
         this.gender = manager.getGender();
-        this.events = manager.getEvents().stream().map(EventDTO::new).collect(Collectors.toSet());
+        this.events = manager.getEvents().stream().map(EventDTONA::new).collect(Collectors.toSet());
     }
 
     public Long getId() {
@@ -65,7 +65,7 @@ public class ManagerDTO {
         return gender;
     }
 
-    public Set<EventDTO> getEvents() {
+    public Set<EventDTONA> getEvents() {
         return events;
     }
 }

@@ -1,6 +1,7 @@
 package com.mindhub.event_planner.controllers;
 
-import com.mindhub.event_planner.dtos.EventLocationDTO;
+import com.mindhub.event_planner.dtos.EventLocationDTOA;
+import com.mindhub.event_planner.dtos.NotAccesibleForEveryone.EventLocationDTONA;
 import com.mindhub.event_planner.services.EventLocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,13 +20,23 @@ public class EventLocationController {
     @Autowired
     EventLocationService eventLocationService;
 
-    @GetMapping("/all")
-    public List<EventLocationDTO> getAll(){
+    @GetMapping("/authAM/all")
+    public List<EventLocationDTONA> getAll(){
         return eventLocationService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/authU/all")
+    public List<EventLocationDTOA> getAll2(){
+        return eventLocationService.findAll2();
+    }
+
+    @GetMapping("/authAM/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id){
-        return new ResponseEntity<>(new EventLocationDTO(eventLocationService.findById(id)), HttpStatus.OK);
+        return new ResponseEntity<>(new EventLocationDTONA(eventLocationService.findById(id)), HttpStatus.OK);
+    }
+
+    @GetMapping("/authU/{id}")
+    public ResponseEntity<?> getById2(@PathVariable Long id){
+        return new ResponseEntity<>(new EventLocationDTOA(eventLocationService.findById(id)), HttpStatus.OK);
     }
 }

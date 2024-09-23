@@ -1,6 +1,6 @@
 package com.mindhub.event_planner.services.implement;
 
-import com.mindhub.event_planner.dtos.UserDTO;
+import com.mindhub.event_planner.dtos.NotAccesibleForEveryone.UserDTO;
 import com.mindhub.event_planner.handlers.ObjectNotFound;
 import com.mindhub.event_planner.models.UserEntity;
 import com.mindhub.event_planner.repositories.UserRepository;

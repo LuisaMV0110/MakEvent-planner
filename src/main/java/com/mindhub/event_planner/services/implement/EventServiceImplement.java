@@ -1,6 +1,7 @@
 package com.mindhub.event_planner.services.implement;
 
-import com.mindhub.event_planner.dtos.EventDTO;
+import com.mindhub.event_planner.dtos.EventDTOA;
+import com.mindhub.event_planner.dtos.NotAccesibleForEveryone.EventDTONA;
 import com.mindhub.event_planner.handlers.ObjectNotFound;
 import com.mindhub.event_planner.models.Event;
 import com.mindhub.event_planner.repositories.EventRepository;
@@ -23,7 +24,14 @@ public class EventServiceImplement implements EventService {
     }
 
     @Override
-    public List<EventDTO> findAll() {
-        return eventRepository.findAll().stream().map(EventDTO::new).collect(Collectors.toList());
+    public List<EventDTOA> findAll2() {
+        return eventRepository.findAll().stream().map(EventDTOA::new).collect(Collectors.toList());
     }
+
+    @Override
+    public List<EventDTONA> findAll() {
+        return eventRepository.findAll().stream().map(EventDTONA::new).collect(Collectors.toList());
+    }
+
+
 }

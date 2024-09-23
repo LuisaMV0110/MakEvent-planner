@@ -1,6 +1,8 @@
 package com.mindhub.event_planner.services.implement;
 
-import com.mindhub.event_planner.dtos.EventLocationDTO;
+import com.mindhub.event_planner.dtos.EventLocationDTOA;
+import com.mindhub.event_planner.dtos.NotAccesibleForEveryone.EventDTONA;
+import com.mindhub.event_planner.dtos.NotAccesibleForEveryone.EventLocationDTONA;
 import com.mindhub.event_planner.handlers.ObjectNotFound;
 import com.mindhub.event_planner.models.EventLocation;
 import com.mindhub.event_planner.repositories.EventLocationRepository;
@@ -18,12 +20,19 @@ public class EventLocationServiceImplement implements EventLocationService {
     EventLocationRepository eventLocationRepository;
 
     @Override
-    public List<EventLocationDTO> findAll() {
-        return eventLocationRepository.findAll().stream().map(EventLocationDTO::new).collect(Collectors.toList());
+    public List<EventLocationDTONA> findAll() {
+        return eventLocationRepository.findAll().stream().map(EventLocationDTONA::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<EventLocationDTOA> findAll2() {
+        return eventLocationRepository.findAll().stream().map(EventLocationDTOA::new).collect(Collectors.toList());
     }
 
     @Override
     public EventLocation findById(Long id) {
         return eventLocationRepository.findById(id).orElseThrow( () -> new ObjectNotFound("The EventLocation with the ID:" + id + " was not found"));
     }
+
+
 }
