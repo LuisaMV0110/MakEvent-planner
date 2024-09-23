@@ -1,6 +1,6 @@
 package com.mindhub.event_planner.services.implement;
 
-import com.mindhub.event_planner.dtos.AdminDTO;
+import com.mindhub.event_planner.dtos.NotAccesibleForEveryone.AdminDTO;
 import com.mindhub.event_planner.handlers.ObjectNotFound;
 import com.mindhub.event_planner.models.Admin;
 import com.mindhub.event_planner.repositories.AdminRepository;

@@ -1,6 +1,6 @@
 package com.mindhub.event_planner.controllers;
 
-import com.mindhub.event_planner.dtos.UserDTO;
+import com.mindhub.event_planner.dtos.NotAccesibleForEveryone.UserDTO;
 import com.mindhub.event_planner.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

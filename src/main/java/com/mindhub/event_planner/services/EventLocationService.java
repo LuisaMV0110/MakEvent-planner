@@ -1,8 +1,13 @@
 package com.mindhub.event_planner.services;
 
-import com.mindhub.event_planner.dtos.EventLocationDTO;
+import com.mindhub.event_planner.dtos.EventLocationDTOA;
+import com.mindhub.event_planner.dtos.NotAccesibleForEveryone.EventLocationDTONA;
 import com.mindhub.event_planner.models.EventLocation;
 
-public interface EventLocationService extends GenericService<EventLocation, EventLocationDTO>{
+import java.util.List;
+
+public interface EventLocationService extends GenericService<EventLocation, EventLocationDTONA>{
     EventLocation findById (Long id);
+
+    List<EventLocationDTOA> findAll2();
 }

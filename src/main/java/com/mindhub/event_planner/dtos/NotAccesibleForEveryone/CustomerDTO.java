@@ -1,4 +1,4 @@
-package com.mindhub.event_planner.dtos;
+package com.mindhub.event_planner.dtos.NotAccesibleForEveryone;
 
 import com.mindhub.event_planner.enums.Gender;
 import com.mindhub.event_planner.models.Customer;
