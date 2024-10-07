@@ -19,10 +19,10 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @GetMapping("/all")
     public List<UserDTONA> getAll(){

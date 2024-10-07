@@ -17,7 +17,7 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     @GetMapping("/all")
     public List<CustomerDTO> getAll(){

@@ -18,10 +18,10 @@ import java.util.List;
 public class ManagerController {
 
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     @Autowired
-    ManagerService managerService;
+    private ManagerService managerService;
 
     @GetMapping("/all")
     public List<ManagerDTONA> getAll(){

@@ -38,9 +38,10 @@ public class SecurityConfig {
                             .requestMatchers("/api/user/all", "/api/user/{id}", "/api/customerEvent/all", "/api/event/auth/all", "/api/event/auth/{id}").hasAnyAuthority("MANAGER", "ADMIN")
                             .requestMatchers("/api/eventLocation/all", "/api/eventLocation/{id}",  "/api/comment/auth/all", "/api/comment/auth/{id}", "/api/like/auth/all", "/api/like/auth/{id}").hasAnyAuthority("USER","MANAGER", "ADMIN")
                             .requestMatchers(HttpMethod.POST, "/api/user/register", "/api/manager/register", "/api/login").permitAll()
-                            .requestMatchers(HttpMethod.POST, "/api/register/admin").hasAuthority("ADMIN")
-                            .requestMatchers(HttpMethod.POST,"/api/event/create").hasAuthority("MANAGER")
-//                            .requestMatchers(HttpMethod.POST,"").hasAnyAuthority("MANAGER", "ADMIN")
+                            .requestMatchers(HttpMethod.POST, "/api/admin/register").hasAuthority("ADMIN")
+                            .requestMatchers(HttpMethod.POST,"/api/event/auth/create", "/api/eventLocation/auth/create").hasAuthority("MANAGER")
+//                            .requestMatchers(HttpMethod.POST,).hasAuthority("USER")
+                            .requestMatchers(HttpMethod.POST,"/api/location/auth/create").hasAnyAuthority("MANAGER", "ADMIN")
                             .requestMatchers(HttpMethod.POST,"/api/logout").hasAnyAuthority("USER","MANAGER", "ADMIN")
                             .anyRequest().denyAll();
                 } )

@@ -3,7 +3,9 @@ package com.mindhub.event_planner.services.implement;
 import com.mindhub.event_planner.dtos.EventLocationDTOA;
 import com.mindhub.event_planner.dtos.notAccesibleForEveryone.EventLocationDTONA;
 import com.mindhub.event_planner.handlers.ObjectNotFound;
+import com.mindhub.event_planner.models.Event;
 import com.mindhub.event_planner.models.EventLocation;
+import com.mindhub.event_planner.models.Location;
 import com.mindhub.event_planner.repositories.EventLocationRepository;
 import com.mindhub.event_planner.services.EventLocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,7 @@ import java.util.stream.Collectors;
 public class EventLocationServiceImplement implements EventLocationService {
 
     @Autowired
-    EventLocationRepository eventLocationRepository;
+    private EventLocationRepository eventLocationRepository;
 
     @Override
     public List<EventLocationDTONA> findAll() {
@@ -26,6 +28,17 @@ public class EventLocationServiceImplement implements EventLocationService {
     @Override
     public List<EventLocationDTOA> findAll2() {
         return eventLocationRepository.findAll().stream().map(EventLocationDTOA::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public void createEventLocation(EventLocation eventLocation, Event event, Location location) {
+        EventLocation eventLocationN = new EventLocation(
+                eventLocation.getDate(),
+                eventLocation.getAssistance(),
+                event,
+                location
+        );
+        eventLocationRepository.save(eventLocationN);
     }
 
     @Override

@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class LikeController {
 
     @Autowired
-    LikeService likeService;
+    private LikeService likeService;
 
     @Autowired
     private CustomerService customerService;

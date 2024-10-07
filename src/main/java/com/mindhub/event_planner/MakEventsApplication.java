@@ -53,9 +53,7 @@ public class MakEventsApplication {
 			manager2.addEvents(event2);
 			eventRepository.save(event2);
 
-			EventLocation eventLocation1 = new EventLocation(LocalDateTime.now().minusDays(14), 450);
-			location1.addEventLocations(eventLocation1);
-			event1.addEventLocations(eventLocation1);
+			EventLocation eventLocation1 = new EventLocation(LocalDateTime.now().minusDays(14), 450, event1, location1);
 			eventLocationRepository.save(eventLocation1);
 
 			CustomerEvent customerEvent1 = new CustomerEvent();

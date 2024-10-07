@@ -19,7 +19,7 @@ public class AdminController {
     private AdminService adminService;
 
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     @GetMapping("/all")
     public List<AdminDTO> getAll(){

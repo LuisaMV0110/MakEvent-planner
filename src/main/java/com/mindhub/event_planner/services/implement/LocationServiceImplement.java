@@ -27,4 +27,13 @@ public class LocationServiceImplement implements LocationService {
         return locationRepository.findById(id).orElseThrow( () -> new ObjectNotFound("The location with the ID: " + id + " was not found"));
     }
 
+    @Override
+    public void createLocation(Location location) {
+        location.setName(location.getName());
+        location.setLocation(location.getLocation());
+        location.setImg(location.getImg());
+        location.setCapacity(location.getCapacity());
+        locationRepository.save(location);
+    }
+
 }

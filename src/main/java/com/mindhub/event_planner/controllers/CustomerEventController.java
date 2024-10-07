@@ -17,7 +17,7 @@ import java.util.List;
 public class CustomerEventController {
 
     @Autowired
-    CustomerEventService customerEventService;
+    private CustomerEventService customerEventService;
 
     @GetMapping("/all")
     public List<CustomerEventDTO> getAll(){
