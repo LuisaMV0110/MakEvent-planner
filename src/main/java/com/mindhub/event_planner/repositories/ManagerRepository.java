@@ -10,4 +10,6 @@ public interface ManagerRepository extends JpaRepository<Manager, Long> {
     Manager findById(long id);
 
     Manager findByEmail(String email);
+
+    boolean existsByEmail (String email);
 }

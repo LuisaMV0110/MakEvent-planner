@@ -1,11 +1,8 @@
-package com.mindhub.event_planner.dtos.NotAccesibleForEveryone;
+package com.mindhub.event_planner.dtos;
 
 import com.mindhub.event_planner.models.Location;
 
-import java.util.Set;
-import java.util.stream.Collectors;
-
-public class LocationDTONA {
+public class LocationDTO {
 
     private Long id;
 
@@ -17,22 +14,17 @@ public class LocationDTONA {
 
     private String img;
 
-    private Set<EventLocationDTONA> eventLocations;
+    public LocationDTO() {}
 
-    public LocationDTONA() {}
-
-    public LocationDTONA(Location location) {
+    public LocationDTO(Location location) {
         this.id = location.getId();
         this.name = location.getName();
         this.location = location.getLocation();
         this.capacity = location.getCapacity();
         this.img = location.getImg();
-        this.eventLocations = location.getEventLocations().stream().map(EventLocationDTONA::new).collect(Collectors.toSet());
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public String getName() {
         return name;
@@ -48,9 +40,5 @@ public class LocationDTONA {
 
     public String getImg() {
         return img;
-    }
-
-    public Set<EventLocationDTONA> getEventLocations() {
-        return eventLocations;
     }
 }

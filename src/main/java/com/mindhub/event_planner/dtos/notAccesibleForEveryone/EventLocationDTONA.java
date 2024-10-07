@@ -1,10 +1,9 @@
-package com.mindhub.event_planner.dtos.NotAccesibleForEveryone;
+package com.mindhub.event_planner.dtos.notAccesibleForEveryone;
 
+import com.mindhub.event_planner.dtos.LocationDTO;
 import com.mindhub.event_planner.models.EventLocation;
 
 import java.time.LocalDateTime;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class EventLocationDTONA {
 
@@ -14,7 +13,9 @@ public class EventLocationDTONA {
 
     private  int assistance;
 
-    private Set<CustomerEventDTO> customerEvents;
+    private EventDTONA event;
+
+    private LocationDTO location;
 
     public EventLocationDTONA() {}
 
@@ -22,7 +23,8 @@ public class EventLocationDTONA {
         this.id = eventLocation.getId();
         this.date = eventLocation.getDate();
         this.assistance = eventLocation.getAssistance();
-        this.customerEvents = eventLocation.getCustomerEvents().stream().map(CustomerEventDTO::new).collect(Collectors.toSet());
+        this.event = new EventDTONA(eventLocation.getEvent());
+        this.location = new LocationDTO(eventLocation.getLocation());
     }
 
     public Long getId() { return id; }
@@ -35,7 +37,7 @@ public class EventLocationDTONA {
         return assistance;
     }
 
-    public Set<CustomerEventDTO> getCustomerEvents() {
-        return customerEvents;
-    }
+    public EventDTONA getEvent() { return event; }
+
+    public LocationDTO getLocation() { return location; }
 }

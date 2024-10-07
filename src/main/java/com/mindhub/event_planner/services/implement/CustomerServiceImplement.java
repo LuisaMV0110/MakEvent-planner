@@ -1,6 +1,6 @@
 package com.mindhub.event_planner.services.implement;
 
-import com.mindhub.event_planner.dtos.NotAccesibleForEveryone.CustomerDTO;
+import com.mindhub.event_planner.dtos.notAccesibleForEveryone.CustomerDTO;
 import com.mindhub.event_planner.handlers.ObjectNotFound;
 import com.mindhub.event_planner.models.Customer;
 import com.mindhub.event_planner.repositories.CustomerRepository;
@@ -20,6 +20,16 @@ public class CustomerServiceImplement implements CustomerService {
     @Override
     public Customer findById(Long id) {
         return customerRepository.findById(id).orElseThrow( () -> new ObjectNotFound("The Customer with the ID:" + id + " was not found"));
+    }
+
+    @Override
+    public Customer findByEmail(String email) {
+        return customerRepository.findByEmail(email).orElseThrow( () -> new ObjectNotFound("The customer with the ID: " + email + " was not found"));
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return customerRepository.existsByEmail(email);
     }
 
     @Override

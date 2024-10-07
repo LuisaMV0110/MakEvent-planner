@@ -1,4 +1,4 @@
-package com.mindhub.event_planner.dtos.NotAccesibleForEveryone;
+package com.mindhub.event_planner.dtos.notAccesibleForEveryone;
 
 import com.mindhub.event_planner.models.Admin;
 
@@ -12,9 +12,6 @@ public class AdminDTO {
 
     private String email;
 
-    private boolean activated;
-
-
     public AdminDTO() {}
 
     public AdminDTO(Admin admin) {
@@ -22,7 +19,6 @@ public class AdminDTO {
         this.name = admin.getName();
         this.lastName = admin.getLastName();
         this.email = admin.getEmail();
-        this.activated = admin.isActivated();
     }
 
     public Long getId() {
@@ -41,7 +37,4 @@ public class AdminDTO {
         return email;
     }
 
-    public boolean isActivated() {
-        return activated;
-    }
 }

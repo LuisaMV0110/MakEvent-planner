@@ -1,4 +1,4 @@
-package com.mindhub.event_planner.dtos.NotAccesibleForEveryone;
+package com.mindhub.event_planner.dtos.notAccesibleForEveryone;
 
 import com.mindhub.event_planner.enums.Gender;
 import com.mindhub.event_planner.models.Customer;
@@ -13,8 +13,6 @@ public class CustomerDTO {
 
     private String email;
 
-    private boolean activated;
-
     private short age;
 
     private Gender gender;
@@ -27,7 +25,6 @@ public class CustomerDTO {
         this.lastName = customer.getLastName();
         this.email = customer.getEmail();
         this.age = customer.getAge();
-        this.activated = customer.isActivated();
         this.gender = customer.getGender();
     }
 
@@ -45,10 +42,6 @@ public class CustomerDTO {
 
     public String getEmail() {
         return email;
-    }
-
-    public boolean isActivated() {
-        return activated;
     }
 
     public short getAge() {

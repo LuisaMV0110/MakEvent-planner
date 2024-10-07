@@ -1,11 +1,16 @@
 package com.mindhub.event_planner.controllers;
 
 import com.mindhub.event_planner.dtos.EventLocationDTOA;
-import com.mindhub.event_planner.dtos.NotAccesibleForEveryone.EventLocationDTONA;
+import com.mindhub.event_planner.dtos.notAccesibleForEveryone.EventLocationDTONA;
+import com.mindhub.event_planner.models.Admin;
+import com.mindhub.event_planner.models.Customer;
+import com.mindhub.event_planner.models.Manager;
+import com.mindhub.event_planner.services.CustomerService;
 import com.mindhub.event_planner.services.EventLocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,23 +25,27 @@ public class EventLocationController {
     @Autowired
     EventLocationService eventLocationService;
 
-    @GetMapping("/authAM/all")
-    public List<EventLocationDTONA> getAll(){
-        return eventLocationService.findAll();
-    }
+    @Autowired
+    CustomerService customerService;
 
-    @GetMapping("/authU/all")
-    public List<EventLocationDTOA> getAll2(){
+    @GetMapping("/all")
+    public List<?> getAll(Authentication authentication){
+        String authEmail = authentication.getName();
+        Customer customer = customerService.findByEmail(authEmail);
+        if(customer instanceof Admin || customer instanceof Manager){
+            return eventLocationService.findAll();
+        }
         return eventLocationService.findAll2();
     }
 
-    @GetMapping("/authAM/{id}")
-    public ResponseEntity<?> getById(@PathVariable Long id){
-        return new ResponseEntity<>(new EventLocationDTONA(eventLocationService.findById(id)), HttpStatus.OK);
-    }
-
-    @GetMapping("/authU/{id}")
-    public ResponseEntity<?> getById2(@PathVariable Long id){
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getById(@PathVariable Long id, Authentication authentication){
+        String authEmail = authentication.getName();
+        Customer customer = customerService.findByEmail(authEmail);
+        if(customer instanceof Admin || customer instanceof Manager){
+            return new ResponseEntity<>(new EventLocationDTONA(eventLocationService.findById(id)), HttpStatus.OK);
+        }
         return new ResponseEntity<>(new EventLocationDTOA(eventLocationService.findById(id)), HttpStatus.OK);
     }
+
 }
