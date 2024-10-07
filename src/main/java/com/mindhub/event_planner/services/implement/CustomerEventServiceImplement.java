@@ -1,6 +1,6 @@
 package com.mindhub.event_planner.services.implement;
 
-import com.mindhub.event_planner.dtos.NotAccesibleForEveryone.CustomerEventDTO;
+import com.mindhub.event_planner.dtos.notAccesibleForEveryone.CustomerEventDTO;
 import com.mindhub.event_planner.handlers.ObjectNotFound;
 import com.mindhub.event_planner.models.CustomerEvent;
 import com.mindhub.event_planner.repositories.CustomerEventRepository;
@@ -24,6 +24,6 @@ public class CustomerEventServiceImplement implements CustomerEventService {
 
     @Override
     public CustomerEvent findById(Long id) {
-        return customerEventRepository.findById(id).orElseThrow( () -> new ObjectNotFound("The CustomerEvent with the ID:" + id + " was not found"));
+        return customerEventRepository.findById(id).orElseThrow( () -> new ObjectNotFound("The customer event with the ID: " + id + " was not found"));
     }
 }

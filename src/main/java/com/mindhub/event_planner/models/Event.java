@@ -14,7 +14,7 @@ public class Event {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="manager_id")
+//    @JoinColumn(name="manager_id")
     private Manager manager;
 
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)

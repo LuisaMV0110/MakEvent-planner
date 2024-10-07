@@ -1,11 +1,9 @@
-package com.mindhub.event_planner.dtos;
+package com.mindhub.event_planner.dtos.notAccesibleForEveryone;
 
 import com.mindhub.event_planner.models.Event;
 
-import java.util.Set;
 
-public class EventDTOA {
-
+public class EventDTONA {
 
     private Long id;
 
@@ -17,23 +15,17 @@ public class EventDTOA {
 
     private String name;
 
-    private ManagerDTOA manager;
+    private ManagerDTONA manager;
 
+    public EventDTONA() {}
 
-    private Set<CommentDTOA> comments;
-
-    private Set<LikeDTOA> likeS;
-
-
-    public EventDTOA() {}
-
-    public EventDTOA(Event event) {
+    public EventDTONA(Event event) {
         this.id = event.getId();
         this.name = event.getName();
         this.age_req = event.getAge_req();
         this.img = event.getImg();
         this.desc = event.getDesc();
-        this.manager = new ManagerDTOA(event.getManager());
+        this.manager = new ManagerDTONA(event.getManager());
     }
 
     public Long getId() {
@@ -56,7 +48,6 @@ public class EventDTOA {
         return name;
     }
 
-    public ManagerDTOA getManager() {
-        return manager;
-    }
+    public ManagerDTONA getManager() { return manager; }
+
 }

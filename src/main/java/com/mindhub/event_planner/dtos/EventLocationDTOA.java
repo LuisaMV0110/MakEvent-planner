@@ -10,11 +10,17 @@ public class EventLocationDTOA {
 
     private LocalDateTime date;
 
+    private EventDTOA event;
+
+    private LocationDTO location;
+
     public EventLocationDTOA() {}
 
     public EventLocationDTOA(EventLocation eventLocation) {
         this.id = eventLocation.getId();
         this.date = eventLocation.getDate();
+        this.event = new EventDTOA(eventLocation.getEvent());
+        this.location = new LocationDTO(eventLocation.getLocation());
     }
 
     public Long getId() { return id; }
@@ -23,4 +29,7 @@ public class EventLocationDTOA {
         return date;
     }
 
+    public EventDTOA getEvent() { return event; }
+
+    public LocationDTO getLocation() { return location; }
 }
