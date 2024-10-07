@@ -1,7 +1,6 @@
 package com.mindhub.event_planner.controllers;
 
 import com.mindhub.event_planner.dtos.EventDTOA;
-import com.mindhub.event_planner.dtos.create.CreateEventDTO;
 import com.mindhub.event_planner.dtos.notAccesibleForEveryone.EventDTONA;
 import com.mindhub.event_planner.models.*;
 import com.mindhub.event_planner.services.*;
@@ -27,8 +26,8 @@ public class EventController {
     @Autowired
     private ManagerService managerService;
 
-    @PostMapping("/create")
-    public ResponseEntity<String> createEvent(@RequestBody CreateEventDTO event, Authentication authentication){
+    @PostMapping("/auth/create")
+    public ResponseEntity<String> createEvent(@RequestBody Event event, Authentication authentication){
         Manager manager = managerService.findByEmail(authentication.getName());
 
         if(event.getName().isBlank()){

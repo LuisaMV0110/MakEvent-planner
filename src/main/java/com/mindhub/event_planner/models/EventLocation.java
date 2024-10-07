@@ -31,9 +31,11 @@ public class EventLocation {
     public EventLocation() {
     }
 
-    public EventLocation( LocalDateTime date, int assistance) {
+    public EventLocation( LocalDateTime date, int assistance, Event event, Location location) {
         this.date = date;
         this.assistance = assistance;
+        this.event = event;
+        this.location = location;
     }
 
     public Long getId() {
