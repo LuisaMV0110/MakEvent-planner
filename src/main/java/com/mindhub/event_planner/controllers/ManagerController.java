@@ -38,28 +38,28 @@ public class ManagerController {
         if (customerService.existsByEmail(manager.getEmail())) {
             return ResponseEntity.badRequest().body("Email " + manager.getEmail() + " already exists");
         } else if(manager.getEmail().isBlank()){
-            return ResponseEntity.badRequest().body("Your email is missing");
+            return ResponseEntity.badRequest().body("The email is missing");
         } else if (!manager.getEmail().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
             return ResponseEntity.badRequest().body("Enter a valid Email address");
         }
         if(manager.getName().isBlank()){
-            return ResponseEntity.badRequest().body("Your name is missing");
+            return ResponseEntity.badRequest().body("The name is missing");
         }else if (!manager.getName().matches("^[a-zA-Z]*$")) {
             return ResponseEntity.badRequest().body("Enter a valid name. Only letters are allowed");
         }
         if(manager.getLastName().isBlank()){
-            return ResponseEntity.badRequest().body("Your last name is missing");
+            return ResponseEntity.badRequest().body("The last name is missing");
         }else if (!manager.getLastName().matches("^[a-zA-Z]*$")) {
             return ResponseEntity.badRequest().body("Enter a valid last name. Only letters are allowed");
         }
         if(manager.getPassword().isBlank()){
-            return ResponseEntity.badRequest().body("Your password is missing");
+            return ResponseEntity.badRequest().body("The  password is missing");
         }
         if(!manager.getGender().equals(Gender.FEMALE) &&!manager.getGender().equals(Gender.MALE) && !manager.getGender().equals(Gender.OTHER) && !manager.getGender().equals(Gender.IPN)){
-            return ResponseEntity.badRequest().body("Your gender is missing or the information you are entering is not valid");
+            return ResponseEntity.badRequest().body("The gender is missing or the information you are entering is not valid");
         }
         if(manager.getAge() < 18){
-            return ResponseEntity.badRequest().body("You must be 18 years old or over to register");
+            return ResponseEntity.badRequest().body("The must be 18 years old or over to register");
         }
         managerService.registerManager(manager);
         return ResponseEntity.ok("Manager registered successfully");

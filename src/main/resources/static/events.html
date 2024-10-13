@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | MakeEvents</title>
+    <link rel="stylesheet" href="./assets/css/navbar.css">
+    <link rel="stylesheet" href="./assets/css/events.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <a href="" class="logo"><i class='bx bxl-gmail'></i><span>MakEvents</span></a>
+
+            <ul class="navbar">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a class="active" href="#">Events</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+            <div class="main">
+                <a href="#" class="user"><i class='bx bxs-user-circle'></i> Profile</a>
+                <a href="#" class="user" @click.prevent="signOut"><i class='bx bx-log-out'></i>Logout</a>
+                <div class="bx bx-menu" id="menu-icon" @click="menuResponsive"></div>
+            </div>
+        </header>
+        <h1 class="tittle">Events</h1>
+        <div class="container-cards">
+        <div class="wrapper" v-for="eventLocation in eventLocations">
+            <div class="event-img">
+                <img :src="eventLocation.event.img" alt="">
+            </div>
+            <div class="event-info">
+                <div class="event-text">
+                    <h2>{{eventLocation.event.name}}</h2>
+                    <h3>By: {{eventLocation.event.manager.name}} {{eventLocation.event.manager.lastName}}</h3>
+                    <p>{{eventLocation.event.desc}}</p>
+                </div>
+                <div class="event-price-btn">
+                    <p><span>Required age: </span>{{eventLocation.event.age_req}}</p>
+                    <a :href="'./event.html?id='+eventLocation.id">More Info</a>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script type="module" src="./assets/js/events.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

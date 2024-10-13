@@ -42,28 +42,44 @@ public class MakEventsApplication {
 			UserEntity user1 = new UserEntity("Marta", true, "Morel", "marta@gmail.com", passwordEncoder.encode("marta123"), (short) 41, Gender.FEMALE);
 			userRepository.save(user1);
 
-			Location location1 = new Location("Park", "CLL 78", 500, "URL");
+			Location location1 = new Location("Park", "CLL 78", 300, "https://grupolar.com.mx/wp-content/uploads/2023/07/parques-cerca-de-mi.jpg");
 			locationRepository.save(location1);
 
-			Event event1 = new Event("A funny event", "URL", (short) 7, "Funny event");
+			Location location2 = new Location("Hotel", "Street 15#4", 400, "https://cdn.traveltripper.io/site-assets/192_552_3091/media/2017-05-12-072727/STEW-Exterior-Night-Web.jpg");
+			locationRepository.save(location2);
+
+			Event event1 = new Event("An exciting kids' event in the park for children aged 7 and up. Games, laughter, activities, and new adventures, ensuring an unforgettable day filled with joy and memorable moments.", "https://fibramorales.co/cdn/shop/files/fabrica-de-parques_infantiles.jpg?v=1695673754&width=3840", (short) 7, "Park Adventure Day");
 			manager.addEvents(event1);
 			eventRepository.save(event1);
 
-			Event event2 = new Event("Buffet in NY", "URL", (short) 16, "Delicious food");
+			Event event2 = new Event("A sumptuous buffet in a New York hotel, offering an array of international cuisines, fresh seafood, delectable desserts, and elegant dining ambiance. A culinary journey you won’t forget.", "https://descubrenyc.us/wp-content/uploads/2024/07/saile-ilyas-SiwrpBnxDww-unsplash.jpg", (short) 16, "New York Feast");
 			manager2.addEvents(event2);
 			eventRepository.save(event2);
 
-			EventLocation eventLocation1 = new EventLocation(LocalDateTime.now().minusDays(14), 450, event1, location1);
+			Event event3 = new Event("An exciting kids' event in the park for children aged 7 and up. Games, laughter, activities, and new adventures, ensuring an unforgettable day filled with joy and memorable moments.", "https://fibramorales.co/cdn/shop/files/fabrica-de-parques_infantiles.jpg?v=1695673754&width=3840", (short) 7, "Park Adventure Day");
+			manager2.addEvents(event3);
+			eventRepository.save(event3);
+
+			Event event4 = new Event("A sumptuous buffet in a New York hotel, offering an array of international cuisines, fresh seafood, delectable desserts, and elegant dining ambiance. A culinary journey you won’t forget.", "https://descubrenyc.us/wp-content/uploads/2024/07/saile-ilyas-SiwrpBnxDww-unsplash.jpg", (short) 16, "New York Feast");
+			manager.addEvents(event4);
+			eventRepository.save(event4);
+
+			EventLocation eventLocation1 = new EventLocation(LocalDateTime.now().plusDays(7), 200, event1, location1);
 			eventLocationRepository.save(eventLocation1);
 
-			CustomerEvent customerEvent1 = new CustomerEvent();
-			user.addCustomerEvents(customerEvent1);
-			eventLocation1.addCustomerEvents(customerEvent1);
+			EventLocation eventLocation2 = new EventLocation(LocalDateTime.now().plusDays(14), 150, event2, location2);
+			eventLocationRepository.save(eventLocation2);
+
+			EventLocation eventLocation3 = new EventLocation(LocalDateTime.now().plusDays(7), 200, event3, location1);
+			eventLocationRepository.save(eventLocation3);
+
+			EventLocation eventLocation4 = new EventLocation(LocalDateTime.now().plusDays(14), 150, event4, location2);
+			eventLocationRepository.save(eventLocation4);
+
+			CustomerEvent customerEvent1 = new CustomerEvent(user, eventLocation1);
 			customerEventRepository.save(customerEvent1);
 
-			CustomerEvent customerEvent2 = new CustomerEvent();
-			user1.addCustomerEvents(customerEvent2);
-			eventLocation1.addCustomerEvents(customerEvent2);
+			CustomerEvent customerEvent2 = new CustomerEvent(user1, eventLocation1);
 			customerEventRepository.save(customerEvent2);
 
 			Comment comment1 = new Comment("I loved this event :D");

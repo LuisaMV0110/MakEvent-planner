@@ -19,6 +19,11 @@ public class CustomerEvent {
 
     public CustomerEvent() {}
 
+    public CustomerEvent(UserEntity user, EventLocation eventLocation) {
+        this.user = user;
+        this.eventLocation = eventLocation;
+    }
+
     public Long getId() {
         return id;
     }

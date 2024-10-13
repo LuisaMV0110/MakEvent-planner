@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event | MakeEvents</title>
+    <link rel="stylesheet" href="./assets/css/navbar.css">
+    <link rel="stylesheet" href="./assets/css/event.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <a href="" class="logo"><i class='bx bxl-gmail'></i><span>MakEvents</span></a>
+
+            <ul class="navbar">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="./events.html">Events</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+            <div class="main">
+                <a href="#" class="user"><i class='bx bxs-user-circle'></i> Profile</a>
+                <a href="#" class="user" @click.prevent="signOut"><i class='bx bx-log-out'></i>Logout</a>
+                <div class="bx bx-menu" id="menu-icon" @click="menuResponsive"></div>
+            </div>
+        </header>
+        <h1 class="tittle-Event">Event details</h1>
+        <div v-if="idEvent" class="container-cardsD">
+        <div class="wrapperD">
+            <div class="event-imgD">
+                <img :src="idEvent.event.img" alt="">
+            </div>
+            <div class="event-infoD">
+                <div class="event-textD">
+                    <h2>{{idEvent.event.name}}</h2>
+                    <h3>By: {{idEvent.event.manager.name}} {{idEvent.event.manager.lastName}}</h3>
+                    <p>{{idEvent.event.desc}}</p>
+                    <h4><span>Required Age: </span>{{idEvent.event.age_req}}</h4>
+                    <h4><span>Date: </span>{{idEvent.date.slice(0,10)}}</h4>
+                    <h4><span>Hour: </span>{{idEvent.date.slice(11,16)}}</h4>
+                    <h4><span>Assistance: </span>{{idEvent.assistance}}</h4>
+                    <h4><span>Location: </span>{{idEvent.location.name}} - {{idEvent.location.location}} </h4>
+                </div>
+                <div class="event-price-btnD">
+
+                    <button type="button">Attend</button>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script type="module" src="./assets/js/event.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

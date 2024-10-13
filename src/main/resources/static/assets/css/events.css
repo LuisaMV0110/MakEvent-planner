@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu";
+    text-decoration: none;
+    list-style: none;
+
+}
+body{
+    background: #f8efff;
+    color: rgb(255, 255, 255);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* Cards */
+
+.container-cards{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+}
+
+.tittle{
+    margin-top: 120px;
+    text-align: center;
+    font-size: 50px;
+    background-color: #7700ff;
+}
+
+
+.wrapper{
+    height: 300px;
+    width: 800px;
+    margin: 50px;
+    border-radius: 7px;
+    -webkit-box-shadow: 0px 14px 32px 0px rgba(156, 51, 255, 0.281);
+    -moz-box-shadow: 0px 14px 32px 0px rgba(156, 51, 255, 0.281);
+    box-shadow: 0px 14px 32px 0px rgba(156, 51, 255, 0.281);
+}
+
+.event-img{
+    float: left;
+    height: 350px;
+    width: 400px;
+}
+
+.event-img img {
+    height: 350px;
+    width: 400px;
+    border-radius: 7px 0 0 7px;
+  }
+
+.event-info{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 350px;
+    width: 400px;
+    border-radius: 0 7px 10px 7px;
+    background-color: #fff;
+}
+
+.event-text{
+    height: 180px;
+    width: 380px;
+}
+
+.event-text h2{
+    margin: 0 0 0 28px;
+    padding-top: 52px;
+    font-size: 34px;
+    color: #1f1524;
+}
+
+.event-text h3{
+    margin: 0 0 15px 28px;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #1f1524b6;
+    letter-spacing: 0.2em;
+}
+
+.event-text p{
+    height: 150px;
+    margin: 0 0 0 18px;
+    color: #1f1524e3;
+    line-height: 1.7em;
+    font-size: 15px;
+    font-weight: lighter;
+    overflow: hidden;
+}
+
+.event-price-btn{
+    display: flex;
+    justify-content: space-around;
+    height: 80px;
+    width: 400px;
+    position: relative;
+}
+
+.event-price-btn p{
+    height: 50px;
+    margin: 15px 0 0 28px;
+    font-size: 18px;
+    font-weight: lighter;
+    color: #1f1524;
+}
+
+.event-price-btn p span{
+    height: 50px;
+    font-size: 18px;
+}
+
+.event-price-btn a{
+    height: 50px;
+    width: 176px;
+    margin: 0 40px 0 16px;
+    padding: 16px;
+    border: transparent;
+    border-radius: 60px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #fff;
+    background-color: #ae58ff;
+    cursor: pointer;
+    outline: none;
+    transition: .5s ease;
+}
+
+.event-price-btn a:hover {
+    background-color: #794afc;
+  }
