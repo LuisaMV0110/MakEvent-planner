@@ -33,17 +33,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests( path -> {
-                    path.requestMatchers("/index.html", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**", "/api/event/public/all","/api/event/public/{id}", "/api/location/all", "/api/location/{id}", "/api/comment/public/all", "/api/comment/public/{id}", "/api/like/public/all", "/api/like/public/{id}").permitAll()
+                    path.requestMatchers("/index.html", "/assets/js/index.js", "/assets/css/style.css", "/assets/img/**" ,"/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**", "/api/event/public/all","/api/event/public/{id}", "/api/location/all", "/api/location/{id}", "/api/comment/public/all", "/api/comment/public/{id}", "/api/like/public/all", "/api/like/public/{id}").permitAll()
                             .requestMatchers("/api/customer/all", "/api/customer/{id}", "/api/admin/all", "/api/admin/{id}", "/api/manager/all", "/api/manager/{id}").hasAuthority("ADMIN")
                             .requestMatchers("/api/user/all", "/api/user/{id}", "/api/customerEvent/all", "/api/event/auth/all", "/api/event/auth/{id}").hasAnyAuthority("MANAGER", "ADMIN")
-                            .requestMatchers("/api/eventLocation/all", "/api/eventLocation/{id}",  "/api/comment/auth/all", "/api/comment/auth/{id}", "/api/like/auth/all", "/api/like/auth/{id}").hasAnyAuthority("USER","MANAGER", "ADMIN")
-                            .requestMatchers(HttpMethod.POST, "/api/user/register", "/api/manager/register", "/api/login").permitAll()
-                            .requestMatchers(HttpMethod.POST, "/api/admin/register").hasAuthority("ADMIN")
+                            .requestMatchers("/events.html", "/event.html","/api/eventLocation/all", "/api/eventLocation/{id}",  "/api/comment/auth/all", "/api/comment/auth/{id}", "/api/like/auth/all", "/api/like/auth/{id}").hasAnyAuthority("USER","MANAGER", "ADMIN")
+                            .requestMatchers(HttpMethod.POST, "/api/register", "/api/login").permitAll()
+                            .requestMatchers(HttpMethod.POST, "/api/admin/register", "/api/manager/register").hasAuthority("ADMIN")
                             .requestMatchers(HttpMethod.POST,"/api/event/auth/create", "/api/eventLocation/auth/create").hasAuthority("MANAGER")
-//                            .requestMatchers(HttpMethod.POST,).hasAuthority("USER")
+                            .requestMatchers(HttpMethod.POST,"/api/customerEvent/auth/create").hasAuthority("USER")
                             .requestMatchers(HttpMethod.POST,"/api/location/auth/create").hasAnyAuthority("MANAGER", "ADMIN")
                             .requestMatchers(HttpMethod.POST,"/api/logout").hasAnyAuthority("USER","MANAGER", "ADMIN")
-                            .anyRequest().denyAll();
+                            .anyRequest().authenticated();
                 } )
                 .csrf(AbstractHttpConfigurer::disable)
                 .headers(httpSecurityHeadersConfigurer -> httpSecurityHeadersConfigurer.frameOptions(
@@ -53,9 +53,9 @@ public class SecurityConfig {
                             .loginProcessingUrl("/api/login")
                             .usernameParameter("email")
                             .passwordParameter("password")
-                            .permitAll()
                             .successHandler((request, response, authentication) -> clearAuthenticationAttributes(request))
-                            .failureHandler((request, response, exception) -> response.sendError(401, "Invalid email or password"));
+                            .failureHandler((request, response, exception) -> response.sendError(401))
+                            .permitAll();
                 })
                 .logout(httpSecurityLogoutConfigurer ->
                         httpSecurityLogoutConfigurer
@@ -63,6 +63,9 @@ public class SecurityConfig {
                                 .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
                                 .deleteCookies("JSESSIONID"))
                 .rememberMe(Customizer.withDefaults());
+
+        http.exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint((request, response, authException) -> response.sendError(401)));
+
         return http.build();
     }
 
@@ -73,14 +76,4 @@ public class SecurityConfig {
         }
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500/**", "http://example.com"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
 }

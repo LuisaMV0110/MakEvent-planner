@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu";
+    text-decoration: none;
+    list-style: none;
+
+}
+body{
+    background: #f8efff;
+    color: rgb(255, 255, 255);
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+}
+
+#app{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Cards */
+
+.container-cardsD{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 50px 0;
+}
+
+.tittle-Event{
+    margin: 120px 0 50px 0;
+    text-align: center;
+    font-size: 50px;
+    background-color: #7700ff;
+}
+
+.wrapperD{
+    display: flex;
+    height: 400px;
+    width: 1100px;
+    border-radius: 7px;
+    -webkit-box-shadow: 0px 14px 32px 0px rgba(156, 51, 255, 0.281);
+    -moz-box-shadow: 0px 14px 32px 0px rgba(156, 51, 255, 0.281);
+    box-shadow: 0px 14px 32px 0px rgba(156, 51, 255, 0.281);
+}
+
+.event-imgD{
+    float: left;
+    height: 400px;
+    width: 550px;
+}
+
+.event-imgD img {
+    height: 400px;
+    width: 550px;
+    border-radius: 7px 0 0 7px;
+  }
+
+.event-infoD{
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
+    width: 700px;
+    border-radius: 0 7px 10px 30px;
+    background-color: #fff;
+}
+
+.event-textD{
+    height: 230px;
+    width: 550px;
+    margin-bottom: 75px;
+}
+
+.event-textD h2{
+    margin: 0 0 0 28px;
+    padding-top: 20px;
+    font-size: 34px;
+    color: #1f1524;
+}
+
+.event-textD h3{
+    margin: 0 0 15px 28px;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #1f1524b6;
+    letter-spacing: 0.2em;
+}
+
+.event-textD h4{
+    margin:0 0 7px 28px;
+    font-size: 15px;
+    font-weight: lighter;
+    color: #1f1524;
+}
+
+.event-textD h4 span{
+    font-size: 16px;
+    font-weight:bold;
+}
+
+.event-textD p{
+    height: 80px;
+    margin: 0 0 5px 28px;
+    color: #1f1524e3;
+    line-height: 1.7em;
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+.event-price-btnD{
+    display: flex;
+    justify-content: space-around;
+    height: 60px;
+    width: 400px;
+}
+
+.event-price-btnD p{
+    height: 50px;
+    margin: 15px 0 0 28px;
+    font-size: 18px;
+    font-weight: lighter;
+    color: #1f1524;
+}
+
+.event-price-btnD p span{
+    height: 50px;
+    font-size: 18px;
+    font-weight:bold;
+}
+
+.event-price-btnD button{
+    height: 50px;
+    width: 250px;
+    padding: 16px;
+    border: transparent;
+    border-radius: 60px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #fff;
+    background-color: #ae58ff;
+    cursor: pointer;
+    outline: none;
+    transition: .5s ease;
+    margin: 5px 0 5px 0;
+}
+
+.event-price-btnD button:hover {
+    background-color: #794afc;
+  }

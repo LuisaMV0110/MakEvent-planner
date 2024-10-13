@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MakEvents</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <!-- LOGIN FORM -->
+     <div class="container" id="app">
+        <div class="curved-shape"></div>
+        <div class="curved-shape2"></div>
+        <div class="form-box login">
+            <h2 class="animation" style="--D:0; --S:21">Login</h2>
+            <form @submit.prevent="signIn">
+                <div class="input-box animation" style="--D:1; --S:22">
+                    <input type="email" name="emailL" id="emailL" v-model="emailL" required>
+                    <label for="emailL">Email</label>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                <div class="input-box animation" style="--D:2; --S:23">
+                    <input type="password" name="passwordL" id="passwordL" v-model="passwordL" required>
+                    <label for="passwordL">Password</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <div class="input-box animation" style="--D:3; --S:24">
+                    <button type="submit" class="btn">Login</button>
+                </div>
+                <div class="regi-link animation" style="--D:4; --S:25">
+                    <p>Don't have an account?<a href="#" class="SignUpLink"> Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="info-content login">
+            <h2 class="animation" style="--D:0; --S:20">WELCOME BACK!</h2>
+            <p class="animation" style="--D:1; --S:21">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex fuga quae impedit explicabo accusantium voluptatum qui sed veniam fugiat nobis.</p>
+        </div>
+         <!-- SIGN UP FORM -->
+         <div class="form-box register">
+            <h2 class="animation" style="--li:17; --S:0">Register</h2>
+            <form @submit.prevent="signUp">
+                <div class="input-box animation" style="--li:18; --S:1">
+                    <input type="text" name="firstName" id="firstName" v-model="firstName" required>
+                    <label for="firstName">First Name</label>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box animation" style="--li:19; --S:2">
+                    <input type="text" name="lastName" id="lastName" v-model="lastName" required>
+                    <label for="lastName">Last Name</label>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box animation" style="--li:20; --S:3">
+                    <input type="email" name="emailR" id="emailR" v-model="emailR" required>
+                    <label for="emailR">Email</label>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                <div class="input-box animation" style="--li:21; --S:4">
+                    <input type="number" name="age" id="age" v-model="age" required>
+                    <label for="age">Age</label>
+                    <i class='bx bx-body'></i>
+                </div>
+                <div class="input-box animation" style="--li:22; --S:5">
+                    <select name="gender" id="gender" v-model="gender" required>
+                        <option value="" selected disabled>Gender</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="MALE">Male</option>
+                        <option value="OTHER">Other</option>
+                        <option value="IPN">I prefer not to say</option>
+                    </select>
+                    <i class='bx bx-male-female'></i>
+                </div>
+                <div class="input-box animation" style="--li:23; --S:6">
+                    <input type="password" name="passwordR" id="passwordR" v-model="passwordR" required>
+                    <label for="passwordR">Password</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <div class="input-box animation" style="--li:24; --S:7">
+                    <button class="btn" type="submit">Register</button>
+                </div>
+                <div class="regi-link animation" style="--li:25; --S:8">
+                    <p>Do you already have an account? <a href="#" class="SignInLink"> Sign In</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="info-content register">
+            <h2 class="animation" style="--li:17; --S:0">WELCOME!</h2>
+            <p class="animation" style="--li:18; --S:1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex fuga quae impedit explicabo accusantium voluptatum qui sed veniam fugiat nobis.</p>
+        </div>
+     </div>
+     <script type="module" src="./assets/js/index.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

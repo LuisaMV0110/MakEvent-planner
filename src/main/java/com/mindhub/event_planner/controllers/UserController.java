@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
@@ -24,12 +24,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/all")
+    @GetMapping("/user/all")
     public List<UserDTONA> getAll(){
         return userService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id){
         return new ResponseEntity<>(new UserDTONA(userService.findById(id)), HttpStatus.OK);
     }
